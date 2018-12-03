@@ -1,0 +1,9 @@
+C:\projects\Status\Status.Services\bin\Debug\netstandard2.0\Status.Services.deps.json
+C:\projects\Status\Status.Services\bin\Debug\netstandard2.0\Status.Services.dll
+C:\projects\Status\Status.Services\bin\Debug\netstandard2.0\Status.Services.pdb
+C:\projects\Status\Status.Services\obj\Debug\netstandard2.0\Status.Services.csproj.CoreCompileInputs.cache
+C:\projects\Status\Status.Services\obj\Debug\netstandard2.0\Status.Services.AssemblyInfoInputs.cache
+C:\projects\Status\Status.Services\obj\Debug\netstandard2.0\Status.Services.AssemblyInfo.cs
+C:\projects\Status\Status.Services\obj\Debug\netstandard2.0\Status.Services.dll
+C:\projects\Status\Status.Services\obj\Debug\netstandard2.0\Status.Services.pdb
+C:\projects\Status\Status.Services\obj\Debug\netstandard2.0\Status.Services.csprojAssemblyReference.cache

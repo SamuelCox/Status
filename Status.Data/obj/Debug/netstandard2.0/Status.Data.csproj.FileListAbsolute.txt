@@ -1,0 +1,9 @@
+C:\projects\Status\Status.Data\bin\Debug\netstandard2.0\Status.Data.deps.json
+C:\projects\Status\Status.Data\bin\Debug\netstandard2.0\Status.Data.dll
+C:\projects\Status\Status.Data\bin\Debug\netstandard2.0\Status.Data.pdb
+C:\projects\Status\Status.Data\obj\Debug\netstandard2.0\Status.Data.csprojAssemblyReference.cache
+C:\projects\Status\Status.Data\obj\Debug\netstandard2.0\Status.Data.csproj.CoreCompileInputs.cache
+C:\projects\Status\Status.Data\obj\Debug\netstandard2.0\Status.Data.AssemblyInfoInputs.cache
+C:\projects\Status\Status.Data\obj\Debug\netstandard2.0\Status.Data.AssemblyInfo.cs
+C:\projects\Status\Status.Data\obj\Debug\netstandard2.0\Status.Data.dll
+C:\projects\Status\Status.Data\obj\Debug\netstandard2.0\Status.Data.pdb

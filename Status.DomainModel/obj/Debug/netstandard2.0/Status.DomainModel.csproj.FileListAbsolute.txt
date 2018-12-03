@@ -1,0 +1,9 @@
+C:\projects\Status\Status.DomainModel\bin\Debug\netstandard2.0\Status.DomainModel.deps.json
+C:\projects\Status\Status.DomainModel\bin\Debug\netstandard2.0\Status.DomainModel.dll
+C:\projects\Status\Status.DomainModel\bin\Debug\netstandard2.0\Status.DomainModel.pdb
+C:\projects\Status\Status.DomainModel\obj\Debug\netstandard2.0\Status.DomainModel.csprojAssemblyReference.cache
+C:\projects\Status\Status.DomainModel\obj\Debug\netstandard2.0\Status.DomainModel.csproj.CoreCompileInputs.cache
+C:\projects\Status\Status.DomainModel\obj\Debug\netstandard2.0\Status.DomainModel.AssemblyInfoInputs.cache
+C:\projects\Status\Status.DomainModel\obj\Debug\netstandard2.0\Status.DomainModel.AssemblyInfo.cs
+C:\projects\Status\Status.DomainModel\obj\Debug\netstandard2.0\Status.DomainModel.dll
+C:\projects\Status\Status.DomainModel\obj\Debug\netstandard2.0\Status.DomainModel.pdb
