@@ -17,6 +17,7 @@ import { CreateUpdateComponent } from './create-update/create-update.component';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Route[] = [
@@ -51,9 +52,10 @@ const routes: Route[] = [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

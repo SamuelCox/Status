@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Update } from '../models/update';
+import { UpdateService } from '../update.service';
 
 @Component({
   selector: 'app-update-master',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateMasterComponent implements OnInit {
 
-  constructor() { }
+  updates : Update[];
+
+  constructor(private updateService : UpdateService) { }
 
   ngOnInit() {
+    this.updateService.getUpdates(1, 99).subscribe( x => this.updates = x );
   }
 
 }

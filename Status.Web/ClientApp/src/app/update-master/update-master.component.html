@@ -1,3 +1,8 @@
-<p>
-  update-master works!
-</p>
+<div>
+  <div class="row">
+    <app-create-update></app-create-update>
+  </div>
+  <div class="row" *ngFor="let update of updates">
+    <app-update-detail [update] = "update"></app-update-detail>
+  </div>
+</div>

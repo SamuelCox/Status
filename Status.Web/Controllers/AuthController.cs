@@ -6,11 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Status.Web.Controllers
 {
+    [Route("api/[controller]")]
     public class AuthController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Register()
         {
-            return View();
+            return null;
+        }
+
+        public IActionResult Login()
+        {
+            return null;
         }
     }
 }
