@@ -1,0 +1,17 @@
+div { 
+    width: 100%
+
+}
+
+.outerCreateUpdate {
+    padding: 0px 0px 5px 0px;
+}
+
+.createUpdate {
+    border-radius: 25px;
+    background: #f8f9fa;
+}
+
+textarea {
+    resize:none;
+}

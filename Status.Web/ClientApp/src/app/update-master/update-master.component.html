@@ -1,6 +1,6 @@
 <div>
   <div class="row">
-    <app-create-update></app-create-update>
+    <app-create-update (newUpdate) = onPost($event)></app-create-update>
   </div>
   <div class="row" *ngFor="let update of updates">
     <app-update-detail [update] = "update"></app-update-detail>

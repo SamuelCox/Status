@@ -1,3 +1,11 @@
-<form>
-  <textarea></textarea>
+<form [formGroup]="createUpdateForm" (ngSubmit)="onSubmit()">
+    <div class="outerCreateUpdate">
+        <div class="row createUpdate"> 
+          <div class="col-md-1"><img class="rounded-circle" src="https://pbs.twimg.com/profile_images/877473869845671936/Q11qLRbL_bigger.jpg" alt="W3Schools.com"> </div>
+          <div class="col-md-11 form-group"> <textarea maxlength="500" formControlName="createUpdate" class="form-control" ></textarea> <input type="submit" value="Post Update"/> </div>
+          <div *ngIf="submitted && createUpdateForm.controls.createUpdate.errors" class="invalid-feedback">
+              <div *ngIf="createUpdateForm.controls.createUpdate.errors.required">You must enter some text.</div>
+            </div>
+        </div>        
+      </div>  
 </form>

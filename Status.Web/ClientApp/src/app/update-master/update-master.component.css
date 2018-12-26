@@ -1,3 +1,8 @@
 app-update-detail {
     width: 100%;
 }
+
+app-create-update {
+    width: 100%;
+    padding-top: 5px;
+}

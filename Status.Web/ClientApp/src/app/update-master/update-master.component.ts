@@ -17,4 +17,8 @@ export class UpdateMasterComponent implements OnInit {
     this.updateService.getUpdates(1, 99).subscribe( x => this.updates = x );
   }
 
+  onPost(update : Update) {
+    this.updates.unshift(update);
+  }
+
 }

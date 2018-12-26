@@ -6,3 +6,4 @@
 /.vs/Status/v15/Server/sqlite3/storage.ide-shm
 /.vs/Status/v15/Server/sqlite3/storage.ide-wal
 /Status.Web/.vscode
+/Status.Web/ClientApp/.vscode

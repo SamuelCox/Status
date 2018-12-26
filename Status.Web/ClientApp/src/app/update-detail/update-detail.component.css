@@ -11,3 +11,7 @@ div {
     border-radius: 25px;
     background: #f8f9fa;
 }
+
+.updateText {
+    overflow: auto;
+}
