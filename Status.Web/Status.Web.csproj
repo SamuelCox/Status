@@ -29,6 +29,11 @@
     <Folder Include="ClientApp\src\app\update-master\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Status.Data\Status.Data.csproj" />
+    <ProjectReference Include="..\Status.DomainModel\Status.DomainModel.csproj" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

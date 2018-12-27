@@ -7,3 +7,7 @@
 /.vs/Status/v15/Server/sqlite3/storage.ide-wal
 /Status.Web/.vscode
 /Status.Web/ClientApp/.vscode
+/Status.Business/bin/Debug/netstandard2.0
+/Status.Business/obj
+*.dll
+/Status.Data/bin/Debug/netstandard2.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml

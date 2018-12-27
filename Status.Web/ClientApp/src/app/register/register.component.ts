@@ -3,6 +3,9 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { RegisterModel } from '../models/registermodel';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +19,9 @@ export class RegisterComponent implements OnInit {
   profilePic : File;
 
   constructor(private formBuilder: FormBuilder,
-              private router: Router) { }
+              private router: Router,
+              private authService : AuthService,
+              private tokenService : TokenService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -28,7 +33,17 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.router.navigate(['/updates']);
+    if (this.registerForm.valid)
+    {
+      let registerModel = new RegisterModel();
+      registerModel.username = this.registerForm.controls.username.value;
+      registerModel.password = this.registerForm.controls.password.value;
+      this.authService.register(registerModel).subscribe(x => {
+        this.tokenService.token = x.token;
+        this.router.navigate(['/updates']);
+      });
+    }
+    
   }
 
   onFileChange(event) {

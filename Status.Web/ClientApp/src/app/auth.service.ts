@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   register(registerModel : RegisterModel) : Observable<LoginResult> {
-    let url = environment.apiUrl + "/auth/login";
+    let url = environment.apiUrl + "/auth/register";
     return this.http.put<LoginResult>(url, registerModel);
   }
 
