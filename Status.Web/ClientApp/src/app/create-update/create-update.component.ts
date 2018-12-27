@@ -17,7 +17,7 @@ export class CreateUpdateComponent implements OnInit {
   createUpdateForm : FormGroup;
   submitted : boolean = false;
   @Output() 
-  newUpdate = new EventEmitter<Update>();
+  postUpdateEvent = new EventEmitter<Update>();
 
   constructor(private formBuilder : FormBuilder, 
               private updateService : UpdateService) { }
@@ -33,7 +33,7 @@ export class CreateUpdateComponent implements OnInit {
     update.text = this.createUpdateForm.controls.createUpdate.value;
     update.createdBy = "sam";
     update.createdDate = "26/12/2018";
-    this.newUpdate.emit(update);
+    this.postUpdateEvent.emit(update);
   }
 
 }

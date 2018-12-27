@@ -10,6 +10,8 @@ import { UpdateService } from '../update.service';
 export class UpdateMasterComponent implements OnInit {
 
   updates : Update[];
+  currentPageNumber : number = 1;
+  pageSize : number = 99;
 
   constructor(private updateService : UpdateService) { }
 
@@ -19,6 +21,13 @@ export class UpdateMasterComponent implements OnInit {
 
   onPost(update : Update) {
     this.updates.unshift(update);
+  }
+
+  loadUpdates() {
+    this.updateService.getUpdates(this.currentPageNumber, this.pageSize).subscribe( x => { 
+      this.updates = this.updates.concat(x)
+      this.currentPageNumber++;      
+    });
   }
 
 }

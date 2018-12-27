@@ -6,11 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Status.Web.Controllers
 {
+    [Route("api/[controller]")]
     public class UpdateController : Controller
     {
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Updates()
         {
-            return View();
+            return Json(null);
+        }
+
+        [HttpPost]
+        public IActionResult PostUpdate()
+        {
+            return Json(true);
         }
     }
 }

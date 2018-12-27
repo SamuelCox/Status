@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Route } from '@angular/router';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -53,6 +54,10 @@ const routes: Route[] = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    LocalStorageModule.withConfig({
+      prefix: 'status',
+      storageType: 'localStorage'
+    }),
     RouterModule.forRoot(routes)
   ],
   providers: [AuthGuard],
