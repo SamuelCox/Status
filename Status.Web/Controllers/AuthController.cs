@@ -49,7 +49,7 @@ namespace Status.Web.Controllers
             if (userCreationResult.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                var token = await GenerateJwtToken(user);
+                var token = GenerateJwtToken(user);
                 loginResult.Token = (string)token;                
                 return Json(loginResult);
             }
@@ -70,7 +70,7 @@ namespace Status.Web.Controllers
             };
             if (signIn.Succeeded)
             {
-                var token = await GenerateJwtToken(user);
+                var token = GenerateJwtToken(user);
                 loginResult.Token = (string)token;
                 return Json(loginResult);
             }
@@ -84,7 +84,7 @@ namespace Status.Web.Controllers
             return null;
         }
 
-        private async Task<object> GenerateJwtToken(IdentityUser user)
+        private object GenerateJwtToken(IdentityUser user)
         {
             var claims = new List<Claim>
             {

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Status.Data;
+using Status.Data.Repositories;
+using Status.DomainModel.Repositories;
 
 namespace Status.Web
 {
@@ -39,6 +41,8 @@ namespace Status.Web
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddTransient<IUpdateRepository, UpdateRepository>();
 
             services.AddAuthentication(options =>
             {
