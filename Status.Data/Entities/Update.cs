@@ -11,9 +11,7 @@ namespace Status.Data.Entities
         public int Id { get; set; }
 
         [MaxLength(500)]
-        public string Text { get; set; }
-
-        public string CreatedBy { get; set; }
+        public string Text { get; set; }        
 
         public DateTimeOffset CreatedDate { get; set; }
 
