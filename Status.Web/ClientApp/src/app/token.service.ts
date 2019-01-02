@@ -22,7 +22,7 @@ export class TokenService {
   getHeaders() : HttpHeaders {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': this.token
+      'Authorization': 'Bearer ' + this.token
     });
     return headers;
   }

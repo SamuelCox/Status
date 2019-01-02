@@ -16,6 +16,11 @@ namespace Status.Data
         }
 
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Blog>().HasKey(x => x.Id);
+            modelBuilder.Entity<Update>().HasKey(x => x.Id);            
+        }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

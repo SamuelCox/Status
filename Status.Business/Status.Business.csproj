@@ -4,4 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Status.DomainModel\Status.DomainModel.csproj" />
+  </ItemGroup>
+
 </Project>

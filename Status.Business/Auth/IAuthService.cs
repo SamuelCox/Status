@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Status.Business
+namespace Status.Business.Auth
 {
-    class UpdateService
+    public interface IAuthService
     {
     }
 }

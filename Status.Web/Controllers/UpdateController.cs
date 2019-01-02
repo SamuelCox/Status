@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Status.Business.Update;
 using Status.DomainModel.Models;
-using Status.DomainModel.Repositories;
 using Status.DomainModel.Requests;
 
 namespace Status.Web.Controllers
@@ -14,11 +10,11 @@ namespace Status.Web.Controllers
     [Authorize]
     public class UpdateController : Controller
     {
-        private IUpdateRepository _updateRepository;
+        private IUpdateService _updateService;
 
-        public UpdateController(IUpdateRepository updateRepository)
+        public UpdateController(IUpdateService updateService)
         {
-            _updateRepository = updateRepository;
+            _updateService = updateService;
         }
 
         [HttpGet]

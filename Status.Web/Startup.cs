@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Status.Business;
+using Status.Business.Update;
 using Status.Data;
 using Status.Data.Repositories;
 using Status.DomainModel.Repositories;
@@ -42,7 +44,9 @@ namespace Status.Web
                 .AddEntityFrameworkStores<IdentityContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddScoped<IStatusContext, StatusContext>();
             services.AddTransient<IUpdateRepository, UpdateRepository>();
+            services.AddTransient<IUpdateService, UpdateService>();
 
             services.AddAuthentication(options =>
             {
@@ -109,8 +113,9 @@ namespace Status.Web
                 }
             });
 
-            context.Database.EnsureCreated();
             identityContext.Database.EnsureCreated();
+            context.Database.EnsureCreated();
+            
         }
     }
 }

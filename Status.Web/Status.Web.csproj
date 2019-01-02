@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Status.Business\Status.Business.csproj" />
     <ProjectReference Include="..\Status.Data\Status.Data.csproj" />
     <ProjectReference Include="..\Status.DomainModel\Status.DomainModel.csproj" />
   </ItemGroup>

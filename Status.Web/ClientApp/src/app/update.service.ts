@@ -13,7 +13,7 @@ export class UpdateService {
   constructor(private tokenService : TokenService, private http : HttpClient) { }
 
   getUpdates(page : number, pageSize : number) : Observable<Update[]> {
-    let url = environment.apiUrl + "/update?page=" + page + "&pageSize=" + pageSize;
+    let url = environment.apiUrl + "/update?PageNumber=" + page + "&PageSize=" + pageSize;
     return this.http.get<Update[]>(url, { headers: this.tokenService.getHeaders()})
   }
 
