@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Status.Business.Update;
 using Status.DomainModel.Models;
@@ -10,22 +13,30 @@ namespace Status.Web.Controllers
     [Authorize]
     public class UpdateController : Controller
     {
-        private IUpdateService _updateService;
+        private readonly IUpdateService _updateService;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IMapper _mapper;
 
-        public UpdateController(IUpdateService updateService)
+        public UpdateController(IUpdateService updateService, UserManager<IdentityUser> userManager, IMapper mapper)
         {
             _updateService = updateService;
+            _userManager = userManager;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult Get(PagedRequest request)
         {
-            return Json(null);
+            var updates = _updateService.GetUpdates(request);
+            return Json(updates);
         }
 
         [HttpPost]
-        public IActionResult Post(Update update)
+        public async Task<IActionResult> Post([FromBody]Update update)
         {
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            update.User = _mapper.Map<User>(currentUser);
+            _updateService.CreateUpdate(update);
             return Json(true);
         }
     }

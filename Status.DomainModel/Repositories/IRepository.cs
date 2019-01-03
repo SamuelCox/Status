@@ -15,6 +15,8 @@ namespace Status.DomainModel.Repositories
         Task<int> Update(T entity);
 
         Task<int> Remove(T entity);
-        
+
+        Task<int> Add(T entity);
+
     }
 }

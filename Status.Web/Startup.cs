@@ -1,4 +1,6 @@
+using System.Security.Claims;
 using System.Text;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +17,7 @@ using Status.Business.Update;
 using Status.Data;
 using Status.Data.Repositories;
 using Status.DomainModel.Repositories;
+using Status.Web.Mapping;
 
 namespace Status.Web
 {
@@ -30,23 +33,30 @@ namespace Status.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<StatusContext>(options =>
-            {
-                options.UseSqlServer(Configuration["StatusContext"]);
-            });
-
             services.AddDbContext<IdentityContext>(options =>
             {
                 options.UseSqlServer(Configuration["StatusContext"]);
-            });
+            }, ServiceLifetime.Singleton);
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddDbContext<StatusContext>(options =>
+            {
+                options.UseSqlServer(Configuration["StatusContext"]);
+            }, ServiceLifetime.Singleton);
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+                    {
+                        options.ClaimsIdentity.UserIdClaimType = ClaimTypes.Name;
+                    })
                 .AddEntityFrameworkStores<IdentityContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddScoped<IStatusContext, StatusContext>();
-            services.AddTransient<IUpdateRepository, UpdateRepository>();
+            services.AddSingleton<IStatusContext>(provider => provider.GetService<StatusContext>());
+            services.AddScoped<IUpdateRepository, UpdateRepository>();
             services.AddTransient<IUpdateService, UpdateService>();
+
+            var config = StatusMappingConfiguration.GetConfig();
+            IMapper mapper = new Mapper(config);
+            services.AddSingleton(mapper);
 
             services.AddAuthentication(options =>
             {
@@ -76,7 +86,7 @@ namespace Status.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, StatusContext context, IdentityContext identityContext)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -112,9 +122,6 @@ namespace Status.Web
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
-
-            identityContext.Database.EnsureCreated();
-            context.Database.EnsureCreated();
             
         }
     }

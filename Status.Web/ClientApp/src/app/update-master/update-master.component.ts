@@ -10,17 +10,27 @@ import { UpdateService } from '../update.service';
 export class UpdateMasterComponent implements OnInit {
 
   updates : Update[];
-  currentPageNumber : number = 1;
+  currentPageNumber : number = 0;
   pageSize : number = 99;
 
   constructor(private updateService : UpdateService) { }
 
   ngOnInit() {
-    this.updateService.getUpdates(1, 99).subscribe( x => this.updates = x );
+    this.updateService.getUpdates(this.currentPageNumber, this.pageSize).subscribe( x => this.updates = x );
   }
 
   onPost(update : Update) {
-    this.updates.unshift(update);
+    this.updateService.postUpdate(update).subscribe(x => {
+      if (this.updates.length == 0)
+      {
+        this.updates.push(update);
+      }
+      else {
+        this.updates.unshift(update)
+      }
+      
+    })
+    ;
   }
 
   loadUpdates() {

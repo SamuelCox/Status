@@ -37,6 +37,11 @@ namespace Status.Data.Repositories
             _statusContext.Set<T>().Remove(entity);
             return await _statusContext.SaveChangesAsync();
         }
-       
+
+        public async Task<int> Add(T entity)
+        {
+            _statusContext.Set<T>().Add(entity);
+            return await _statusContext.SaveChangesAsync();
+        }
     }
 }

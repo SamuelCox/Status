@@ -24,12 +24,13 @@ namespace Status.Business
 
         public List<DomainModel.Models.Update> GetUpdates(PagedRequest pagedRequest)
         {
-            throw new NotImplementedException();
+            return _updateRepository.GetUpdates(pagedRequest);
         }
 
         public bool CreateUpdate(DomainModel.Models.Update update)
         {
-            throw new NotImplementedException();
+            _updateRepository.AddUpdate(update);
+            return true;
         }
     }
 }

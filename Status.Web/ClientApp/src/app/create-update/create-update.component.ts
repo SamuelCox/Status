@@ -30,9 +30,8 @@ export class CreateUpdateComponent implements OnInit {
 
   onSubmit() {
     let update = new Update();
-    update.text = this.createUpdateForm.controls.createUpdate.value;
-    update.createdBy = "sam";
-    update.createdDate = "26/12/2018";
+    update.text = this.createUpdateForm.controls.createUpdate.value;    
+    update.createdDate = new Date().toISOString();
     this.postUpdateEvent.emit(update);
   }
 

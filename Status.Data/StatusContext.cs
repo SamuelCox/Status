@@ -19,7 +19,13 @@ namespace Status.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Blog>().HasKey(x => x.Id);
-            modelBuilder.Entity<Update>().HasKey(x => x.Id);            
+            modelBuilder.Entity<Update>(b =>
+            {
+                b.ToTable("Update");
+                b.HasKey(x => x.Id);
+
+                b.HasOne(x => x.Creator).WithMany().HasForeignKey(y => y.UserId);
+            });            
         }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

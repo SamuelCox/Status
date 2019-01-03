@@ -1,5 +1,8 @@
+import { User } from './user';
+
 export class Update {
     text : string;
     createdBy : string;
-    createdDate : string;
+    createdDate : any;
+    user : User;
 }
