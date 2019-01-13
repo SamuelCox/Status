@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Status.DomainModel.Requests;
 
@@ -8,7 +6,7 @@ namespace Status.DomainModel.Repositories
 {
     public interface IUpdateRepository
     {
-        List<DomainModel.Models.Update> GetUpdates(PagedRequest pagedRequest);
+        IQueryable<DomainModel.Models.Update> GetUpdates();
         Task AddUpdate(DomainModel.Models.Update update);
     }
 }

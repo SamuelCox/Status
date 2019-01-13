@@ -35,7 +35,7 @@ namespace Status.Web.Controllers
         public async Task<IActionResult> Post([FromBody]Update update)
         {
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
-            update.User = _mapper.Map<User>(currentUser);
+            update.Creator = _mapper.Map<User>(currentUser);
             _updateService.CreateUpdate(update);
             return Json(true);
         }

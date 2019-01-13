@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using Microsoft.AspNetCore.Identity;
-using Status.Business.Update;
 using Status.DomainModel.Repositories;
 using Status.DomainModel.Requests;
 
-namespace Status.Business
+namespace Status.Business.Update
 {
     public class UpdateService : IUpdateService
     {
-        private IUpdateRepository _updateRepository;
+        private readonly IUpdateRepository _updateRepository;
 
         public UpdateService(IUpdateRepository updateRepository)
         {
@@ -24,7 +23,9 @@ namespace Status.Business
 
         public List<DomainModel.Models.Update> GetUpdates(PagedRequest pagedRequest)
         {
-            return _updateRepository.GetUpdates(pagedRequest);
+            var updates = _updateRepository.GetUpdates().Skip(pagedRequest.PageNumber * pagedRequest.PageSize)
+                .Take(pagedRequest.PageSize).ToList();
+            return updates;
         }
 
         public bool CreateUpdate(DomainModel.Models.Update update)

@@ -4,5 +4,5 @@ export class Update {
     text : string;
     createdBy : string;
     createdDate : any;
-    user : User;
+    creator : User;
 }

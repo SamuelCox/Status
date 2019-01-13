@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using Status.Data.Entities;
 using Status.DomainModel.Repositories;
 using Status.DomainModel.Requests;
@@ -21,10 +23,12 @@ namespace Status.Data.Repositories
             _mapper = mapper;
         }
 
-        public List<DomainModel.Models.Update> GetUpdates(PagedRequest pagedRequest)
+        public IQueryable<DomainModel.Models.Update> GetUpdates()
         {
-            var entities = GetAll().Skip(pagedRequest.PageNumber * pagedRequest.PageSize).Take(pagedRequest.PageSize).ToList();
-            return _mapper.Map<List<DomainModel.Models.Update>>(entities);
+            var entities = GetAll().Include(x => x.AspNetUser);
+            var models = GetAll().Include(x => x.AspNetUser)
+                .ProjectTo<DomainModel.Models.Update>(_mapper.ConfigurationProvider);
+            return models;
         }
 
         public async Task AddUpdate(DomainModel.Models.Update update)

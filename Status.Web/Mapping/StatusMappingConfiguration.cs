@@ -11,7 +11,9 @@ namespace Status.Web.Mapping
         {
             var config = new MapperConfiguration(cfg =>
                 {
-                    cfg.CreateMap<Update, DomainModel.Models.Update>().ReverseMap();
+                    cfg.CreateMap<Update, DomainModel.Models.Update>().
+                        ForMember(x => x.Creator, o => o.MapFrom(x => x.AspNetUser))
+                        .ReverseMap();
                     cfg.CreateMap<IdentityUser, User>().ReverseMap();
                 });
             return config;

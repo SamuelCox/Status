@@ -53,7 +53,7 @@ namespace Status.Data
                 // Each User can have many entries in the UserRole join table
                 b.HasMany<IdentityUserRole<string>>().WithOne().HasForeignKey(ur => ur.UserId).IsRequired();
 
-                b.HasMany<Update>().WithOne(u => u.Creator).HasForeignKey(us => us.UserId); 
+                b.HasMany<Update>().WithOne(u => u.AspNetUser).HasForeignKey(us => us.UserId); 
             });
 
             builder.Entity<IdentityUserClaim<string>>(b =>

@@ -17,6 +17,6 @@ namespace Status.Data.Entities
 
         public string UserId { get; set; }
 
-        public virtual IdentityUser Creator { get; set; }
+        public virtual IdentityUser AspNetUser { get; set; }
     }
 }

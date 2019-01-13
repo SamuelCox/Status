@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Status.Business;
+using Status.Business.Auth;
 using Status.Business.Update;
 using Status.Data;
 using Status.Data.Repositories;
@@ -53,6 +54,7 @@ namespace Status.Web
             services.AddSingleton<IStatusContext>(provider => provider.GetService<StatusContext>());
             services.AddScoped<IUpdateRepository, UpdateRepository>();
             services.AddTransient<IUpdateService, UpdateService>();
+            services.AddTransient<IAuthService, AuthService>();
 
             var config = StatusMappingConfiguration.GetConfig();
             IMapper mapper = new Mapper(config);
