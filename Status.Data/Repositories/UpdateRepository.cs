@@ -8,24 +8,20 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using Status.Data.Entities;
 using Status.DomainModel.Repositories;
-using Status.DomainModel.Requests;
 
 namespace Status.Data.Repositories
 {
     public class UpdateRepository : BaseRepository<Update>, IUpdateRepository
-    {
-        private IStatusContext _statusContext;
+    {        
         private readonly IMapper _mapper;
 
         public UpdateRepository(IStatusContext statusContext, IMapper mapper) : base(statusContext)
         {
-            _statusContext = statusContext;
             _mapper = mapper;
         }
 
         public IQueryable<DomainModel.Models.Update> GetUpdates()
-        {
-            var entities = GetAll().Include(x => x.AspNetUser);
+        {            
             var models = GetAll().Include(x => x.AspNetUser)
                 .ProjectTo<DomainModel.Models.Update>(_mapper.ConfigurationProvider);
             return models;

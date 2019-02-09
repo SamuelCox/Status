@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Route } from '@angular/router';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { QuillModule } from 'ngx-quill'
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -58,7 +59,8 @@ const routes: Route[] = [
       prefix: 'status',
       storageType: 'localStorage'
     }),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    QuillModule.forRoot()
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogPreview } from '../models/blog-preview';
+import { BlogService } from '../blog.service';
 
 @Component({
   selector: 'app-blog-master',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogMasterComponent implements OnInit {
 
-  constructor() { }
+  blogPreviews: BlogPreview[];
+  private currentPageNumber: number = 1;
+  private pageSize = 99;
+
+  constructor(private blogService: BlogService) { }
 
   ngOnInit() {
+    this.blogService.getBlogPreviews(this.currentPageNumber, this.pageSize).subscribe(x => this.blogPreviews = x);
+    this.currentPageNumber++;
   }
 
 }

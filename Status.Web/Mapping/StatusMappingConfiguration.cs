@@ -15,6 +15,9 @@ namespace Status.Web.Mapping
                         ForMember(x => x.Creator, o => o.MapFrom(x => x.AspNetUser))
                         .ReverseMap();
                     cfg.CreateMap<IdentityUser, User>().ReverseMap();
+                    cfg.CreateMap<Data.Entities.Blog, DomainModel.Models.Blog>()
+                        .ForMember(x => x.Creator, o => o.MapFrom(x => x.AspNetUser))
+                        .ReverseMap();
                 });
             return config;
         }

@@ -1,3 +1,8 @@
-<p>
-  blog-master works!
-</p>
+<div class="card" *ngFor="let preview of blogPreviews">
+  <a [routerLink]="['blogs', preview.id]">
+    <div class="card-body">
+      <h5 class="card-title">{{preview.title}}</h5>      
+      <p class="card-text">{{preview.previewText}}</p>
+    </div>
+  </a>
+</div>

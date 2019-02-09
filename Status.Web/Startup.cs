@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Status.Business;
 using Status.Business.Auth;
+using Status.Business.Blog;
 using Status.Business.Update;
 using Status.Data;
 using Status.Data.Repositories;
@@ -55,6 +56,9 @@ namespace Status.Web
             services.AddScoped<IUpdateRepository, UpdateRepository>();
             services.AddTransient<IUpdateService, UpdateService>();
             services.AddTransient<IAuthService, AuthService>();
+
+            services.AddScoped<IBlogRepository, BlogRepository>();
+            services.AddTransient<IBlogService, BlogService>();            
 
             var config = StatusMappingConfiguration.GetConfig();
             IMapper mapper = new Mapper(config);

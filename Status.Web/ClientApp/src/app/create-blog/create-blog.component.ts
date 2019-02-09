@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService } from '../blog.service';
+import { Blog } from '../models/blog';
 
 @Component({
   selector: 'app-create-blog',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateBlogComponent implements OnInit {
 
-  constructor() { }
+  text: string;
+
+  constructor(private blogService: BlogService) { }
 
   ngOnInit() {
+  }
+
+  createBlog() {
+    const blog = new Blog();
+    blog.text = this.text;
+    blog.createdDate = new Date().toISOString();
+    this.blogService.createBlog(blog).subscribe();
   }
 
 }

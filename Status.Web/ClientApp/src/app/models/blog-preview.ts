@@ -1,8 +1,9 @@
 import { User } from './user';
 
-export class Blog {
+export class BlogPreview {
     id: number;
-    text : string;
+    title: string;
+    previewText: string;
     createdDate : any;
     creator : User;
 }
