@@ -1,5 +1,8 @@
+<div (click)="redirectToCreate()">
+  <h2>Create a new Blog now!</h2>
+</div>
 <div class="card" *ngFor="let preview of blogPreviews">
-  <a [routerLink]="['blogs', preview.id]">
+  <a [routerLink]="['/blogs', preview.id]">
     <div class="card-body">
       <h5 class="card-title">{{preview.title}}</h5>      
       <p class="card-text">{{preview.previewText}}</p>

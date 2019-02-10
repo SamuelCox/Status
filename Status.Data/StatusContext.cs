@@ -19,7 +19,13 @@ namespace Status.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Blog>().HasKey(x => x.Id);
+            modelBuilder.Entity<Blog>(b =>
+            {
+                b.ToTable("Blog");
+                b.HasKey(x => x.Id);
+
+                b.HasOne(x => x.AspNetUser).WithMany().HasForeignKey(y => y.UserId).IsRequired();
+            });
             modelBuilder.Entity<Update>(b =>
             {
                 b.ToTable("Update");

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Update } from '../models/update';
 import { UpdateService } from '../update.service';
+import { AuthService } from '../auth.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-update-master',
@@ -13,13 +15,15 @@ export class UpdateMasterComponent implements OnInit {
   currentPageNumber : number = 0;
   pageSize : number = 99;
 
-  constructor(private updateService : UpdateService) { }
+  constructor(private updateService : UpdateService, private authService: AuthService) { }
 
   ngOnInit() {
     this.updateService.getUpdates(this.currentPageNumber, this.pageSize).subscribe( x => this.updates = x );
   }
 
   onPost(update : Update) {
+    update.creator = new User();
+    update.creator.userName = this.authService.userName;
     this.updateService.postUpdate(update).subscribe(x => {
       if (this.updates.length == 0)
       {

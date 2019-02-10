@@ -12,10 +12,13 @@ import { RegisterModel } from './models/registermodel';
 })
 export class AuthService {
 
+  userName: string;
+
   constructor(private tokenService : TokenService, private http : HttpClient) { }
 
   login(loginModel : Login) : Observable<LoginResult> {
     let url = environment.apiUrl + "/auth/login";
+    this.userName = loginModel.username;
     return this.http.post<LoginResult>(url, loginModel);
   }
 
@@ -26,6 +29,7 @@ export class AuthService {
 
   register(registerModel : RegisterModel) : Observable<LoginResult> {
     let url = environment.apiUrl + "/auth/register";
+    this.userName = registerModel.username;
     return this.http.put<LoginResult>(url, registerModel);
   }
 

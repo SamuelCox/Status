@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using Status.Data.Entities;
 using Status.DomainModel.Repositories;
 
@@ -18,7 +19,7 @@ namespace Status.Data.Repositories
 
         public IQueryable<DomainModel.Models.Blog> GetBlogs()
         {
-            var models = GetAll().ProjectTo<DomainModel.Models.Blog>(_mapper.ConfigurationProvider);
+            var models = GetAll().Include(x => x.AspNetUser).ProjectTo<DomainModel.Models.Blog>(_mapper.ConfigurationProvider);
             return models;
         }
 

@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Route } from '@angular/router';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { QuillModule } from 'ngx-quill'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -60,7 +62,9 @@ const routes: Route[] = [
       storageType: 'localStorage'
     }),
     RouterModule.forRoot(routes),
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
