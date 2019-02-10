@@ -52,7 +52,8 @@ namespace Status.Business.Blog
 
         private IQueryable<DomainModel.Models.Blog> GetAllBlogs(PagedRequest pagedRequest)
         {
-            return _blogRepository.GetBlogs().Skip(pagedRequest.PageNumber * pagedRequest.PageSize)
+            return _blogRepository.GetBlogs().OrderByDescending(x => x.CreatedDate)
+                .Skip(pagedRequest.PageNumber * pagedRequest.PageSize)
                 .Take(pagedRequest.PageSize);
         }
 

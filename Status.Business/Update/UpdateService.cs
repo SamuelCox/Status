@@ -23,7 +23,9 @@ namespace Status.Business.Update
 
         public List<DomainModel.Models.Update> GetUpdates(PagedRequest pagedRequest)
         {
-            var updates = _updateRepository.GetUpdates().Skip(pagedRequest.PageNumber * pagedRequest.PageSize)
+            var updates = _updateRepository.GetUpdates()
+                .OrderByDescending(x => x.CreatedDate)
+                .Skip(pagedRequest.PageNumber * pagedRequest.PageSize)
                 .Take(pagedRequest.PageSize).ToList();
             return updates;
         }
